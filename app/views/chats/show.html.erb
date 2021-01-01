@@ -1,0 +1,14 @@
+<%= turbo_stream_from @chat %>
+
+<%= turbo_frame_tag "chat" do %>
+  <%= render @chat %>
+  <%= link_to 'Edit', edit_chat_path(@chat) %>
+  <%= link_to 'Back', chats_path, 'data-turbo-frame': '_top' %>
+<% end %>
+
+<div id="messages">
+  <%= render @chat.messages %>
+</div>
+
+<%= turbo_frame_tag "new_message", src: new_chat_message_path(@chat) %>
+
